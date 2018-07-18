@@ -60,15 +60,15 @@ border-top: 7px solid rgb(255, 60, 0);
 h4 {
     background-color: rgb(255, 60, 0);
     font-weight: bold;
-    font-size: 25px;
+    font-size: 35px;
     color: #ffffff;
     float: left;
     padding: 30px;
-    margin-bottom: 0;
+    
    
 }
 
-.button {
+.btn-light {
 
     
     color: rgb(255, 60, 0);
