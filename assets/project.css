@@ -1,7 +1,3 @@
-body {
-
-    /*background-image: url("./images/dust_scratches.png");*/
-}
 
 #container {
 
@@ -143,4 +139,9 @@ h4 {
 
     }
 
+}
+/*this is your own addition, edit out later */
+
+#recipe-col {
+    background-color: rgba(255,255,255,.8);
 }
