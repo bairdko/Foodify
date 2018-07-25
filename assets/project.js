@@ -6,7 +6,6 @@ var host = "spoonacular-recipe-food-nutrition-v1.p.mashape.com";
 var contentType = "application/x-www-form-urlencoded";
 
 
-var searchBtn = '#recipeBtn';
 var searchTerm = 'chicken';
 
 const RECIPE_NUM = 10;
@@ -64,8 +63,9 @@ var searchRecipes = function(event){
 
   //also figure out how to make it work when hit enter
 
+
   //THIS WON'T PULL MULTIPLE SEARCH TERMS. RESEARCH.
-  searchTerm = $('#recipeSearch').val();
+  searchTerm = $('#recipeInput').val();
   searchByRecipeURL = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/autocomplete?query='+searchTerm+'&number=10';
   var saveRecipeIds = [];
   saveResults = [];
@@ -223,5 +223,14 @@ var createRecipeCard = function(event){
 }
 
 
-$(document).on("click",searchBtn,searchRecipes);
+//search on click
+$(document).on("click",'#recipeButton',searchRecipes);
+
+//search on enter
+$(document).on("keyup",function(event){
+  if (event.which === 13)
+     searchRecipes(event);
+});
+
+//pull recipes
 $(document).on("click",'.recipeBtn',createRecipeCard);
