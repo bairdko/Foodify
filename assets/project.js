@@ -1,55 +1,58 @@
 
 //Spoonacular Keys
-var searchByRecipeURL = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/autocomplete?query='+searchTerm+'&number=10';
 var apiKey = "JZgoI18VD1mshWBo98PFcTvqZbMJp1kNIV8jsna2XWGFBVzgIa";
 var host = "spoonacular-recipe-food-nutrition-v1.p.mashape.com";
 var contentType = "application/x-www-form-urlencoded";
 
-
-var searchTerm = 'chicken';
-
 const RECIPE_NUM = 10;
 var saveResults = [];
+
+let tableRef = $('tbody');
+let loader = $('.loader');
 
 //this outputs at most 10 recipes to a table
 var searchDetails = function(array1,array2){
 
-  let tableRef = $('tbody');
+  //grab table ref
+  //let tableRef = $('tbody');
   tableRef.empty();
-
+  
   for (let i = 0; i < array1.length; i++){
 
-    $.ajax({type: "GET",
-    url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/'+array1[i]+'/information',
-    
-    headers: { "X-Mashape-Key": apiKey,
-               "X-Mashape-Host": host,
-               "Content-Type": contentType  }}).then(function(response){
+	$.ajax({type: "GET",
+	url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/'+array1[i]+'/information',
+	
+	headers: { "X-Mashape-Key": apiKey,
+			   "X-Mashape-Host": host,
+			   "Content-Type": contentType  }}).then(function(response){
 
-      array2.push(response);
+	  array2.push(response);
 
-      let tableRow = $('<tr>');
-      let title = response.title;
+	  let tableRow = $('<tr>');
+	  tableRow.attr('scope','row');
+	  
+	  let title = response.title;
 
-      // MAYBE CONSIDER A TIME CONVERTER
-      let timeNeeded = response.readyInMinutes;
-      if (response.preparationMinutes){
-        timeNeeded = response.preparationMinutes + response.readyInMinutes;
-      }
+	  // MAYBE CONSIDER A TIME CONVERTER
+	  let timeNeeded = response.readyInMinutes;
+	  if (response.preparationMinutes){
+		timeNeeded = response.preparationMinutes + response.readyInMinutes;
+	  }
 
-      let popularity = response.spoonacularScore;
+	  let popularity = response.spoonacularScore;
 
-      tableRow.append('<td>'+title+'</td>');
-      tableRow.append('<td>'+timeNeeded + ' minutes' +'</td>');
-      tableRow.append('<td>'+popularity + '% popularity'+'</td>');
-      tableRow.append('<td><button class = "btn btn-dark text-white recipeBtn" value = "' + response.id + '">View Recipe</button></td>');
-      tableRef.append(tableRow);
+	  tableRow.append('<td>'+title+'</td>');
+	  tableRow.append('<td>'+timeNeeded + ' minutes' +'</td>');
+	  tableRow.append('<td>'+popularity + '% popularity'+'</td>');
+	  tableRow.append('<td><button class = "btn btn-dark text-white recipeBtn" value = "' + response.id + '">View Recipe</button></td>');
+	  tableRef.append(tableRow);
   
-    //end ajax function  
-    });
+	//end ajax function  
+	});
 
   //end for loop
   }
+  
  
 //end searchDetails
 }
@@ -61,22 +64,28 @@ var searchRecipes = function(event){
   //add this thing
   event.preventDefault();
 
-  //also figure out how to make it work when hit enter
-
-
-  //THIS WON'T PULL MULTIPLE SEARCH TERMS. RESEARCH.
-  searchTerm = $('#recipeInput').val();
-  searchByRecipeURL = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/autocomplete?query='+searchTerm+'&number=10';
+  //display loader while ajax runs
+ 
+  var searchTerm = $('#recipeInput').val();
+  
+  //reset arrays  
   var saveRecipeIds = [];
   saveResults = [];
 
 
   $.ajax({type: "GET",
-  url: searchByRecipeURL,
+  
+  url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients='
+	+ searchTerm +
+  '&limitLicense=false&number=10&ranking=1',
    
   headers: { "X-Mashape-Key": apiKey,
              "X-Mashape-Host": host,
              "Content-Type": contentType }}).then(function(response){
+				 
+	//display loader and hide header
+	tableRef.css('display','none');
+	loader.css('display','inline');
     
     for(var i = 0; i < RECIPE_NUM; i++){
       saveRecipeIds.push(response[i].id);
@@ -85,7 +94,6 @@ var searchRecipes = function(event){
     //get recipe info
     searchDetails(saveRecipeIds,saveResults);
 
-    console.log(saveResults);
   //end ajax
   });
 
@@ -97,9 +105,6 @@ var searchRecipes = function(event){
 //This pulls the recipe on click of recipe
 var createRecipeCard = function(event){
   event.preventDefault;
-
-  // var arrayNum = $(this).val();
-  // console.array(arrayNum);
 
   //empty the location
   var location = $('#recipe-card');
@@ -222,6 +227,9 @@ var createRecipeCard = function(event){
 
 }
 
+//default setting: do not display table or loader
+tableRef.css('display','none');
+loader.css('display','none');
 
 //search on click
 $(document).on("click",'#recipeButton',searchRecipes);
@@ -234,3 +242,10 @@ $(document).on("keyup",function(event){
 
 //pull recipes
 $(document).on("click",'.recipeBtn',createRecipeCard);
+
+$(document).ajaxStop(function(){
+
+	tableRef.css('display','table');
+	loader.css('display','none');
+	
+  });
