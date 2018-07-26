@@ -7,52 +7,51 @@ var contentType = "application/x-www-form-urlencoded";
 const RECIPE_NUM = 10;
 var saveResults = [];
 
-let tableRef = $('tbody');
-let loader = $('.loader');
+var tableDisplay = $('table');
+var loader = $('.loader');
 
 //this outputs at most 10 recipes to a table
 var searchDetails = function(array1,array2){
-
-  //grab table ref
-  //let tableRef = $('tbody');
-  tableRef.empty();
   
   for (let i = 0; i < array1.length; i++){
+    var tableRef = $('tbody');
+    tableRef.empty();
 
-	$.ajax({type: "GET",
-	url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/'+array1[i]+'/information',
-	
-	headers: { "X-Mashape-Key": apiKey,
-			   "X-Mashape-Host": host,
-			   "Content-Type": contentType  }}).then(function(response){
+    $.ajax({type: "GET",
+    url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/'+array1[i]+'/information',
+    
+    headers: { "X-Mashape-Key": apiKey,
+          "X-Mashape-Host": host,
+          "Content-Type": contentType  }}).then(function(response){
 
-	  array2.push(response);
+      array2.push(response);
 
-	  let tableRow = $('<tr>');
-	  tableRow.attr('scope','row');
-	  
-	  let title = response.title;
 
-	  // MAYBE CONSIDER A TIME CONVERTER
-	  let timeNeeded = response.readyInMinutes;
-	  if (response.preparationMinutes){
-		timeNeeded = response.preparationMinutes + response.readyInMinutes;
-	  }
+      let tableRow = $('<tr>');
+      tableRow.attr('scope','row');
+      
+      let title = response.title;
 
-	  let popularity = response.spoonacularScore;
+      // MAYBE CONSIDER A TIME CONVERTER
+      let timeNeeded = response.readyInMinutes;
+      if (response.preparationMinutes){
+      timeNeeded = response.preparationMinutes + response.readyInMinutes;
+      }
 
-	  tableRow.append('<td>'+title+'</td>');
-	  tableRow.append('<td>'+timeNeeded + ' minutes' +'</td>');
-	  tableRow.append('<td>'+popularity + '% popularity'+'</td>');
-	  tableRow.append('<td><button class = "btn btn-dark text-white recipeBtn" value = "' + response.id + '">View Recipe</button></td>');
-	  tableRef.append(tableRow);
-  
-	//end ajax function  
-	});
+      let popularity = response.spoonacularScore;
+
+      tableRow.append('<td>'+title+'</td>');
+      tableRow.append('<td>'+timeNeeded + ' minutes' +'</td>');
+      tableRow.append('<td>'+popularity + '% popularity'+'</td>');
+      tableRow.append('<td><button class = "btn btn-dark text-white recipeBtn" value = "' + response.id + '">View Recipe</button></td>');
+      tableRef.append(tableRow);
+
+    //end ajax function  
+    });
+    
 
   //end for loop
   }
-  
  
 //end searchDetails
 }
@@ -84,13 +83,13 @@ var searchRecipes = function(event){
              "Content-Type": contentType }}).then(function(response){
 				 
 	//display loader and hide header
-	tableRef.css('display','none');
+	tableDisplay.css('display','none');
 	loader.css('display','inline');
     
     for(var i = 0; i < RECIPE_NUM; i++){
       saveRecipeIds.push(response[i].id);
     }
-
+    
     //get recipe info
     searchDetails(saveRecipeIds,saveResults);
 
@@ -123,8 +122,6 @@ var createRecipeCard = function(event){
     }
     
   }
-
-  console.log(recipeChosen);
   
   //create container
   var createContainer = $('<div>');
@@ -228,7 +225,7 @@ var createRecipeCard = function(event){
 }
 
 //default setting: do not display table or loader
-tableRef.css('display','none');
+tableDisplay.css('display','none');
 loader.css('display','none');
 
 //search on click
@@ -245,7 +242,7 @@ $(document).on("click",'.recipeBtn',createRecipeCard);
 
 $(document).ajaxStop(function(){
 
-	tableRef.css('display','table');
+	tableDisplay.css('display','table');
 	loader.css('display','none');
 	
   });
