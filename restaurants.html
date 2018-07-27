@@ -9,8 +9,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=.4">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" type="text/css" href="./assets/project.css">
-    
-    
+
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+          height: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
+      </style>
 
 <title>restaurants</title>
 
@@ -18,8 +30,8 @@
 
 <div class="container-fluid">
 <div class="header">
-        
-    
+
+
     <h4>Foodify</h4>
     <br>
     <br>
@@ -40,17 +52,17 @@
                   </div><!-- /input-group -->
                 </div><!-- /.col-lg-6 -->
               </div><!-- /.row -->
-    
-          
+
+
 
           <p> </p>
 
-        
-          
- 
+
+
+
     </div>
     </div>
-    
+
     <br>
     <br>
 
@@ -60,7 +72,7 @@
 
     <div class="main">
 
-      <div class="row"> 
+      <div class="row">
           <div class="column">
             <img src="assets/images/beefkabab.jpg">
             <img src="assets/images/beefwell.jpg">
@@ -68,7 +80,7 @@
           <div class="column">
             <img src="assets/images/dumpling.jpg">
             <img src="assets/images/sushi.jpg">
-          </div> 
+          </div>
           <div class="column">
             <img src="assets/images/burger2background.jpeg">
             <img src="assets/images/cake.jpg">
@@ -82,7 +94,7 @@
 <h2></h2>
 
 
-<p> 
+<p>
 
 </p>
 
@@ -93,14 +105,21 @@
 
 </div>
 
-<footer class="footer">
+
+
+<div id="map"></div>
+<!-- <footer class="footer">
   <div id = "container">
       Copyright &copy;
   </div>
-</footer>
+
+</footer> -->
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src ="./assets/project.js"></script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbk3RQCujaAyCVk8esnxZgSRP2RF_rRrg&libraries=places&callback=initMap">
+</script>
 </body>
 
 </html>
