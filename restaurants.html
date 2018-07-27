@@ -7,65 +7,60 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=.4">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" type="text/css" href="./assets/project.css">
 
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+          height: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
+      </style>
 
-
-<title>Foodify.com</title>
-
-  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-  <meta charset="utf-8">
-
-  <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
+<title>restaurants</title>
 
 </head>
 
+<div class="container-fluid">
 <div class="header">
 
-        <h4>Foodify</h4>
-        <br>
-        <br>
 
-        <div class="row">
-            <div class="col-lg-6">
-              <div class="input-group">
-                <span class="input-group-btn">
-                  <button class="btn btn-default" id="search" type="button">Go!</button>
-                </span>
-                <input type="text" class="form-control" id="cuisine" placeholder="Search for recipes">
-              </div><!-- /input-group -->
-            </div><!-- /.col-lg-6 -->
-            <div class="col-lg-6">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for restaurants">
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="button">Go!</button>
-                </span>
-              </div><!-- /input-group -->
-            </div><!-- /.col-lg-6 -->
-          </div><!-- /.row -->
+    <h4>Foodify</h4>
+    <br>
+    <br>
 
-          <br>
-          <br>
+    <ul id="navbar">
+      <li id="homeLink"><a href="./index.html">Home</a></li>
+      <li id="restaurantLink"><a href="./restaurants.html">Restaurants</a></li>
+      <li id="recipesLink"><a href="./recipes.html">Recipes</a></li>
+  </ul>
+
+        <div id="restaurantRow" class="row">
+                <div class="col-lg-6">
+                  <div id="restaurantInputDiv" class="input-group">
+                    <span class="input-group-btn">
+                      <button id="restaurantButton" class="btn btn-default" type="button">Search</button>
+                    </span>
+                    <input id="restaurantInput" type="text" class="form-control" placeholder="Search for recipes">
+                  </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+              </div><!-- /.row -->
 
 
-          <button type="button" id="about" class="btn btn-light">About</button>
 
           <p> </p>
 
 
+
+
+    </div>
     </div>
 
     <br>
@@ -76,6 +71,25 @@
 <div id="container">
 
     <div class="main">
+
+      <div class="row">
+          <div class="column">
+            <img src="assets/images/beefkabab.jpg">
+            <img src="assets/images/beefwell.jpg">
+          </div>
+          <div class="column">
+            <img src="assets/images/dumpling.jpg">
+            <img src="assets/images/sushi.jpg">
+          </div>
+          <div class="column">
+            <img src="assets/images/burger2background.jpeg">
+            <img src="assets/images/cake.jpg">
+          </div>
+          <div class="column">
+            <img src="assets/images/fruitbackground.jpeg">
+            <img src="assets/images/meatplate.jpg">
+          </div>
+      </div>
 
 <h2></h2>
 
@@ -91,62 +105,21 @@
 
 </div>
 
+
+
 <div id="map"></div>
-    <script>
-      // Note: This example requires that you consent to location sharing when
-      // prompted by your browser. If you see the error "The Geolocation service
-      // failed.", it means you probably did not give permission for the browser to
-      // locate you.
-      // var map, infoWindow, pos;
-      // function initMap() {
-      //   map = new google.maps.Map(document.getElementById('map'), {
-      //     center: {lat: -34.397, lng: 150.644},
-      //     zoom: 6
-      //   });
-      //   infoWindow = new google.maps.InfoWindow;
-      //
-      //   // Try HTML5 geolocation.
-      //   if (navigator.geolocation) {
-      //     navigator.geolocation.getCurrentPosition(function(position) {
-      //       var pos = {
-      //         lat: position.coords.latitude,
-      //         lng: position.coords.longitude
-      //       };
-      //
-      //       infoWindow.setPosition(pos);
-      //       infoWindow.setContent('Location found.');
-      //       infoWindow.open(map);
-      //       map.setCenter(pos);
-      //     }, function() {
-      //       handleLocationError(true, infoWindow, map.getCenter());
-      //     });
-      //   } else {
-      //     // Browser doesn't support Geolocation
-      //     handleLocationError(false, infoWindow, map.getCenter());
-      //   }
-      // }
-      //
-      // function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-      //   infoWindow.setPosition(pos);
-      //   infoWindow.setContent(browserHasGeolocation ?
-      //                         'Error: The Geolocation service failed.' :
-      //                         'Error: Your browser doesn\'t support geolocation.');
-      //   infoWindow.open(map);
-      // }
-    </script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<!-- <footer class="footer">
+  <div id = "container">
+      Copyright &copy;
+  </div>
 
+</footer> -->
 
-        <script src ="./assets/project.js"></script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbk3RQCujaAyCVk8esnxZgSRP2RF_rRrg&libraries=places&callback=initMap">
-    </script>
-
-
-<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
-<!-- <script src ="./assets/project.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src ="./assets/project.js"></script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbk3RQCujaAyCVk8esnxZgSRP2RF_rRrg&libraries=places&callback=initMap">
+</script>
 </body>
-
-<footer class="foot">Copyright &copy;</footer>
 
 </html>
