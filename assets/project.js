@@ -2,6 +2,34 @@ var map;
 var userPos = {lat: -34.397, lng: 150.644};
 var cuisine = "mexican";
 var infoWindow;
+
+
+
+$("#restaurantButton").on("click", function(){
+
+    var test = document.createElement('audio');
+    test.setAttribute('src', './assets/audio/feelinlazy.mp3')
+    test.play('');
+
+   });
+   $("#recipeButton").on("click", function(){
+
+    var test = document.createElement('audio');
+    test.setAttribute('src', './assets/audio/fridge.mp3')
+    test.play('');
+
+   });
+   $(".recipeBtn").on("click", function(){
+
+    var test = document.createElement('audio');
+    test.setAttribute('src', './assets/audio/chomp.mp3')
+    test.play('');
+
+   });
+
+    //$("fridgeSound").get().play();
+
+    
 function initMap() {
   pos = userPos;
   map = new google.maps.Map(document.getElementById('map'), {
