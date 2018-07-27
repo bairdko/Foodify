@@ -10,6 +10,7 @@ function initMap() {
   });
   infoWindow = new google.maps.InfoWindow;
   var service = new google.maps.places.PlacesService(map);
+
         service.nearbySearch({
           location: pos,
           radius: 3000,
@@ -50,6 +51,9 @@ function initMap() {
     google.maps.event.addListener(marker, 'click', function() {
       console.log(place);
       infoWindow.open(map, marker);
+      setTimeout(function(){
+        infoWindow.close();
+      }, 7000);
     });
   }
 
@@ -115,6 +119,13 @@ function initMap() {
     cuisine = $("#cuisine").val();
     map.setCenter(userPos);
     initMap();
+    var userMarker = new google.maps.Marker({
+      map: map,
+      //is this line of code redundant? could placeLoc variabe be used here?
+      icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+      position: userPos
+
+    });
 
     // console.log("the value of search is " + cuisine);
     // // console.log(userLocation);
