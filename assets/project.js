@@ -1,16 +1,14 @@
 var map;
 var userPos = {lat: -34.397, lng: 150.644};
-var infowindow;
 var cuisine = "mexican";
-
+var infoWindow;
 function initMap() {
   pos = userPos;
   map = new google.maps.Map(document.getElementById('map'), {
     center: pos,
-    zoom: 6
+    zoom: 13
   });
   infoWindow = new google.maps.InfoWindow;
-
   var service = new google.maps.places.PlacesService(map);
         service.nearbySearch({
           location: pos,
@@ -30,13 +28,17 @@ function initMap() {
 
 
   function createMarker(place) {
+    console.log(place.name);
     var placeLoc = place.geometry.location;
     var marker = new google.maps.Marker({
       map: map,
       //is this line of code redundant? could placeLoc variabe be used here?
       position: place.geometry.location
     });
-
+    var infoContent = "<h3>" + place.name + "</h3>";
+    var infoWindow = new google.maps.InfoWindow({
+      content:infoContent
+    });
     function handleLocationError(browserHasGeolocation, infoWindow, pos) {
       infoWindow.setPosition(pos);
       infoWindow.setContent(browserHasGeolocation ?
@@ -46,8 +48,8 @@ function initMap() {
     }
 
     google.maps.event.addListener(marker, 'click', function() {
-      infowindow.setContent(place.name);
-      infowindow.open(map, this);
+      console.log(place);
+      infoWindow.open(map, marker);
     });
   }
 
