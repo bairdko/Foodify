@@ -24,8 +24,22 @@ h2 {
 
 }
 
-.foot {
+/*footer */
+html {
+position: relative;
+min-height: 100%;
+}
 
+body {
+margin-bottom: 60px; /* Margin bottom by footer height */
+}
+
+    
+
+.footer {
+position: absolute;
+bottom: 0; 
+width: 100%;  
 background-color: #666666;
 margin: 0;
 text-align: center;
@@ -120,6 +134,10 @@ h4 {
 
 /*added this in***************/
 
+#no-border {
+    border: none;
+}
+
 
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
@@ -144,6 +162,34 @@ h4 {
 
 /*******************/
 
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+  }
+  
+  /* Create four equal columns that sits next to each other */
+  .column {
+    flex: 25%;
+    max-width: 25%;
+    padding: 0 4px;
+  }
+  
+  .column img {
+    margin-top: 40px;
+    height: 150px;
+    width: 150px;
+    vertical-align: middle;
+  }
+  
+  /* Responsive layout - makes a two column-layout instead of four columns */
+  @media screen and (max-width: 800px) {
+    .column {
+      flex: 50%;
+      max-width: 50%;
+    }
+  }
+
 @media (max-width: 980px) {
 
     .main 
@@ -162,7 +208,7 @@ h4 {
        
     }
 
-    .foot {
+    .footer {
 
         float: left;
         width: 530px;
@@ -189,7 +235,7 @@ h4 {
         
     }
 
-    .foot {
+    .footer {
 
         float: left;
         width: 450px;
