@@ -1,16 +1,3 @@
-body {
-
-    background-image: url("./images/dust_scratches.png");
-}
-
-#container {
-
-    background-image: url("./images/tablebackground.jpeg");
-    width: 100%;
-    height: 500px;
-    margin: 0px auto;
-
-}
 
 .main {
 
@@ -21,6 +8,7 @@ padding-top: 5px;
 padding-bottom: 5px;
 color: #777777;
 line-height: 1.7;
+border-top: 7px solid rgb(255, 60, 0);
 
 
 }
@@ -35,8 +23,22 @@ h2 {
 
 }
 
-.foot {
+/*footer */
+html {
+position: relative;
+min-height: 100%;
+}
 
+body {
+margin-bottom: 60px; /* Margin bottom by footer height */
+}
+
+    
+
+.footer {
+position: absolute;
+bottom: 0; 
+width: 100%;  
 background-color: #666666;
 margin: 0;
 text-align: center;
@@ -60,12 +62,23 @@ border-top: 7px solid rgb(255, 60, 0);
 h4 {
     background-color: rgb(255, 60, 0);
     font-weight: bold;
-    font-size: 35px;
+    font-size: 30px;
     color: #ffffff;
     float: left;
     padding: 30px;
-    
-   
+}
+
+.sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 10;
+    background-position: center;
+    overflow-x: hidden;
+    padding-top: 20px;
 }
 
 .btn-light {
@@ -81,6 +94,100 @@ h4 {
     margin: 10px;
 
 }
+
+.header ul {
+
+    font-family: Georgia, Times, 'Times New Roman', serif;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    text-align: center;
+    color: rgb(255, 60, 0);
+    font-size: 15px;
+    background-color: #ffffff;
+    font-weight: bold;
+    float: right;
+   
+}
+
+.header li {
+
+    font-family: 'Georgia', Times, 'Times New Roman', serif;
+    display: inline;
+    padding: 10px;
+    vertical-align: right;
+    color: rgb(255, 60, 0);
+}
+
+.header a {
+
+    text-decoration: none;
+    font-family: Georgia, Times, 'Times New Roman', serif;
+    color: rgb(255, 60, 0);
+    background-color: #ffffff;
+    border-right: 1px solid gainsboro;
+    padding-right: 10px;
+  
+
+}
+
+/*added this in***************/
+
+#no-border {
+    border: none;
+}
+
+
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid rgb(255, 60, 0); /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+	margin: 0 auto;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/*******************/
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+  }
+  
+  /* Create four equal columns that sits next to each other */
+  .column {
+    flex: 25%;
+    max-width: 25%;
+    padding: 0 4px;
+  }
+  
+  .column img {
+    margin-top: 40px;
+    height: 150px;
+    width: 150px;
+    vertical-align: middle;
+  }
+  
+  /* Responsive layout - makes a two column-layout instead of four columns */
+  @media screen and (max-width: 800px) {
+    .column {
+      flex: 50%;
+      max-width: 50%;
+    }
+  }
 
 @media (max-width: 980px) {
 
@@ -100,7 +207,7 @@ h4 {
        
     }
 
-    .foot {
+    .footer {
 
         float: left;
         width: 530px;
@@ -127,7 +234,7 @@ h4 {
         
     }
 
-    .foot {
+    .footer {
 
         float: left;
         width: 450px;
@@ -141,6 +248,10 @@ h4 {
         margin-left: 0;
         margin-right: 175px;
 
+    }
+    @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
     }
 
 }
