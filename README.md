@@ -23,6 +23,7 @@ This app was developed as the first group project during the bootcamp. The guide
 - If you click on the restaurants tab, the app has a google map image that shows restaurants near your area.
 
 #### Known Issues:
+- *This app will not run because Spoonacular Key is removed.*
 - If you time out the recipe search or it cannot pull any recipes, there is no error message. The screen will just be perpetually stuck on loading.
 - The app will only work if the Google Maps API is hosted locally. At this point in the Bootcamp, we had not learned how to manage the backend server aspect of web development.
 - The map does not seem to accurately target restaurants of a specific cuisine type.
