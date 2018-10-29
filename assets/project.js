@@ -107,34 +107,6 @@ function initMap() {
 
 
 
-  // function location(){
-  //   navigator.geolocation.getCurrentPosition(function(position) {
-  //      pos = {
-  //       lat: position.coords.latitude,
-  //       lng: position.coords.longitude
-  //     };
-  //     // var cuisine = $("#cuisine").val();
-  //     // console.log("the value of search is " + cuisine);
-  //     // // console.log(userLocation);
-  //     // var apiKey = "AIzaSyBbk3RQCujaAyCVk8esnxZgSRP2RF_rRrg";
-  //     //
-  //     //
-  //     // var urlQuery = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + pos.lat + "," + pos.lng + "&radius=3000&type=restaurant&keyword=" + cuisine + "&key=" + apiKey;
-  //     //
-  //     // $.ajax({
-  //     //   url: urlQuery,
-  //     //   method: "GET"
-  //     // }).then(function(response){
-  //     //   console.log(response);
-  //     // });
-  //     return pos;
-  //   });
-  // }
-  //
-  // location();
-
-
-
 
 
 
@@ -155,21 +127,6 @@ function initMap() {
 
     });
 
-    // console.log("the value of search is " + cuisine);
-    // // console.log(userLocation);
-    // var apiKey = "AIzaSyBbk3RQCujaAyCVk8esnxZgSRP2RF_rRrg";
-    //
-    //
-    // var urlQuery = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + pos.lat + "," + pos.lng + "&radius=3000&type=restaurant&keyword=" + cuisine + "&key=" + apiKey;
-    // console.log(pos.lat);
-    // console.log(pos.lng);
-    // $.ajax({
-    //   url: urlQuery,
-    //   method: "GET"
-    // }).then(function(response){
-    //   console.log(response);
-    // });
-
 
   });
 
@@ -178,7 +135,7 @@ function initMap() {
 //Document ready closing
 
 //Spoonacular Keys
-var apiKey = "JZgoI18VD1mshWBo98PFcTvqZbMJp1kNIV8jsna2XWGFBVzgIa";
+var apiKey = "";
 var host = "spoonacular-recipe-food-nutrition-v1.p.mashape.com";
 var contentType = "application/x-www-form-urlencoded";
 
